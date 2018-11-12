@@ -1,6 +1,5 @@
 module.exports = function(app, passport) {
   const express = require('express');
-  const router = express.Router();
   const controller = require('../controllers/controllers');
 
  app.get('/', function(req, res){
@@ -12,6 +11,7 @@ module.exports = function(app, passport) {
  });
 
  app.get('/inicio', controller.inicio);
+ app.post('/add', controller.save);
 
  app.post('/login', passport.authenticate('local-login', {
   successRedirect: '/profile',
@@ -32,15 +32,24 @@ module.exports = function(app, passport) {
  });
 
  app.post('/signup', passport.authenticate('local-signup', {
-  successRedirect: '/profile',
+  successRedirect: '/',
   failureRedirect: '/signup',
   failureFlash: true
  }));
 
  app.get('/profile', isLoggedIn, function(req, res){
-  res.render('profile.ejs', {
-   user:req.user
-  });
+   req.getConnection((err, conn) => {
+     conn.query('SELECT * FROM Oferta', (err, rows) => {
+       if (err){
+         console.log(err);
+       }
+       console.log(rows);
+       res.render('profile.ejs', {
+         user: req.user,
+         data: 'rows'
+       });
+     });
+   });
  });
 
  app.get('/logout', function(req,res){

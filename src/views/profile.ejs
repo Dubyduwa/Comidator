@@ -6,6 +6,7 @@
   <link rel="stylesheet" href="https://bootswatch.com/4/lux/bootstrap.min.css">
 </head>
 <body>
+
   <nav class="navbar navbar-expand-lg navbar-dark bg-primary">
     <a class="navbar-brand" href="/profile">APP COMIDAS</a>
     <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarColor01" aria-controls="navbarColor01" aria-expanded="false" aria-label="Toggle navigation">
@@ -15,20 +16,68 @@
     <div class="collapse navbar-collapse" id="navbarColor01">
       <ul class="navbar-nav mr-auto">
         <li class="nav-item">
-          <a class="nav-link" href="/inicio">Cerrar sesión</a>
+        <a class="nav-link" href="/inicio">Editar perfil</a>
+      </li>
+        <li class="nav-item">
+          <a class="nav-link" href="/logout">Cerrar sesión</a>
         </li>
       </ul>
+      <form class="form-inline my-2 my-lg-0">
+        <input class="form-control mr-sm-2" type="text" placeholder="Busca una oferta">
+        <a href="/inicio" class="btn btn-warning">Buscar</a>
+      </form>
     </div>
-    <form class="form-inline my-2 my-lg-0">
-      <input class="form-control mr-sm-2" type="text" placeholder="Busca una oferta">
-      <button class="btn btn-secondary my-2 my-sm-0" href="/inicio" type="submit">Buscar</button>
-    </form>
   </nav>
+
  <div class="container">
   <div class="page-header text-center">
    <h1>Mi perfil</h1>
    <a href="/logout" class="btn btn-danger btn-sm">Cerrar sesión</a>
   </div>
+
+<div class="container">
+  <div class="row">
+    <div class="col-md-7">
+      <table class="table table-bordered title-hover">
+        <thead>
+          <tr>
+            <th>Oferta</th>
+            <th>Vendedor</th>
+            <th>Descripción</th>
+            <th>Localización</th>
+            <th>Actions</th>
+          </tr>
+        </thead>
+        <tbody>
+
+        </tbody>
+      </table>
+    </div>
+    <div class="col-md-5">
+    <div class="card">
+      <div class="card-header">
+        <h4>Publicar una oferta</h4>
+      </div>
+      <div class="card-body">
+        <form action="/add" method="post">
+          <div class="form-group">
+            <input type="text" name="titulo" placeholder="Añade un título" class="form-control">
+          </div>
+          <div class="form-group">
+            <input type="text" name="descripcion" placeholder="Añade una descripción" class="form-control">
+          </div>
+          <div class="form-group">
+            <input type="text" name="ciudad" placeholder="Añade una localización" class="form-control">
+          </div>
+          <button type="submit" class="btn btn-primary">
+            Publicar oferta
+          </button>
+        </form>
+      </div>
+    </div>
+    </div>
+  </div>
+</div>
 
   <div class="row">
    <div class="col-sm-12">

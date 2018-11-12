@@ -1,8 +1,10 @@
 var express = require('express');
 var session = require('express-session');
+var myConnection = require('express-myconnection');
 var cookieParser = require('cookie-parser');
 var bodyParser = require('body-parser');
 var morgan = require('morgan');
+var mysql = require('mysql');
 var app = express();
 var port = process.env.PORT || 3000;
 
@@ -17,6 +19,14 @@ app.use(cookieParser());
 app.use(bodyParser.urlencoded({
  extended: true
 }));
+app.use(myConnection(mysql, {
+  host: 'localhost',
+  user: 'admin',
+  password: 'admin1234',
+  port: 3306,
+  database: 'appcomidasdb'
+}, 'single'));
+app.use(express.urlencoded({extended: false}));
 
 app.set('views', './src/views');;
 app.set('view engine', 'ejs');
