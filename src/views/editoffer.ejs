@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <title>APP COMIDAS</title>
+  <link rel="stylesheet" href="https://bootswatch.com/4/lux/bootstrap.min.css">
+</head>
+<body>
+  <nav class="navbar navbar-expand-lg navbar-dark bg-primary">
+    <a class="navbar-brand" href="/profile">APP COMIDAS</a>
+    <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarColor01" aria-controls="navbarColor01" aria-expanded="false" aria-label="Toggle navigation">
+      <span class="navbar-toggler-icon"></span>
+    </button>
+
+    <div class="collapse navbar-collapse" id="navbarColor01">
+      <ul class="navbar-nav mr-auto">
+        <li class="nav-item">
+        <a class="nav-link" href="/inicio">Editar perfil</a>
+      </li>
+        <li class="nav-item">
+          <a class="nav-link" href="/logout">Cerrar sesión</a>
+        </li>
+      </ul>
+    </div>
+    <form class="form-inline my-2 my-lg-0">
+      <input class="form-control mr-sm-2" type="text" placeholder="Busca una oferta">
+      <a href="/inicio" class="btn btn-secondary">Buscar</a>
+    </form>
+  </nav>
+  <div class="container mt-5">
+    <div class="row">
+      <div class="col-md-5">
+        <div class="card">
+          <div class="card-header">
+            <h4>Edita tu oferta</h4>
+          </div>
+          <div class="card-body">
+            <form action="/updateoffer/<%= data.id %>" method="post">
+              <div class="form-group">
+                <input type="text" name="titulo" value="<%= data.titulo %>" class="form-control">
+              </div>
+              <div class="form-group">
+                <input type="text" name="descripcion" value="<%= data.descripcion %>" class="form-control">
+              </div>
+              <div class="form-group">
+                <input type="int" name="porciones" value="<%= data.porciones %>" class="form-control">
+              </div>
+              <div class="form-group">
+                <input type="text" name="ciudad" value="<%= data.ciudad %>" class="form-control">
+              </div>
+              <button type="submit" class="btn btn-primary">
+                Guardar cambios
+              </button>
+              <a href="/profile" class="btn btn-danger btn-sm">Volver</a>
+            </form>
+        </div>
+      </div>
+    </div>
+  </div>
+
+</body>
+</html>

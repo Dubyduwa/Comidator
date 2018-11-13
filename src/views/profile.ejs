@@ -16,7 +16,7 @@
     <div class="collapse navbar-collapse" id="navbarColor01">
       <ul class="navbar-nav mr-auto">
         <li class="nav-item">
-        <a class="nav-link" href="/inicio">Editar perfil</a>
+        <a class="nav-link" href="#">Editar perfil</a>
       </li>
         <li class="nav-item">
           <a class="nav-link" href="/logout">Cerrar sesión</a>
@@ -24,36 +24,51 @@
       </ul>
       <form class="form-inline my-2 my-lg-0">
         <input class="form-control mr-sm-2" type="text" placeholder="Busca una oferta">
-        <a href="/inicio" class="btn btn-warning">Buscar</a>
+        <a href="#" class="btn btn-secondary">Buscar</a>
       </form>
     </div>
   </nav>
 
  <div class="container">
-  <div class="page-header text-center">
-   <h1>Mi perfil</h1>
-   <a href="/logout" class="btn btn-danger btn-sm">Cerrar sesión</a>
+  <div class="page-header text-left mt-2">
+   <h1>Hola <%= user.username %>, tus ofertas:</h1>
   </div>
+ </div>
 
 <div class="container">
   <div class="row">
     <div class="col-md-7">
-      <table class="table table-bordered title-hover">
+      <table class="table table-bordered table-hover">
         <thead>
           <tr>
             <th>Oferta</th>
-            <th>Vendedor</th>
             <th>Descripción</th>
+            <th>Porciones</th>
             <th>Localización</th>
-            <th>Actions</th>
+            <th>Acciones</th>
           </tr>
         </thead>
         <tbody>
-
+            <% if (data) { %>
+              <% for (var i = 0; i < data.length; i++) { %>
+                <% if (data[i].idusuario == user.id) { %>
+                <tr>
+                  <td> <%= data[i].titulo %> </td>
+                  <td> <%= data[i].descripcion %> </td>
+                  <td> <%= data[i].porciones %> </td>
+                  <td> <%= data[i].ciudad %> </td>
+                  <td>
+                    <a href="/updateoffer/<%= data[i].id %>" class="btn btn-info"> Editar </a>
+                    <a href="/deleteoffer/<%= data[i].id %>" class="btn btn-danger"> Borrar </a>
+                  </td>
+                </tr>
+                <% } %>
+              <% } %>
+            <% } %>
         </tbody>
       </table>
     </div>
-    <div class="col-md-5">
+    <div class="col ml-5">
     <div class="card">
       <div class="card-header">
         <h4>Publicar una oferta</h4>
@@ -65,6 +80,9 @@
           </div>
           <div class="form-group">
             <input type="text" name="descripcion" placeholder="Añade una descripción" class="form-control">
+          </div>
+          <div class="form-group">
+            <input type="int" name="porciones" placeholder="Añade número de porciones" class="form-control">
           </div>
           <div class="form-group">
             <input type="text" name="ciudad" placeholder="Añade una localización" class="form-control">
@@ -79,18 +97,50 @@
   </div>
 </div>
 
-  <div class="row">
-   <div class="col-sm-12">
-    <div class="well">
-     <h3><span class="fa fa-user"></span> Bienvenido de nuevo <%= user.username %></h3>
+<div class="container">
+ <div class="page-header text-left mt-5">
+  <h1>Ofertas que te pueden interesar:</h1>
+ </div>
+</div>
 
-     <p>
-      <strong>id</strong> <%= user.id %> <br>
-      <strong>username</strong> <%= user.username %> <br>
-     </p>
+<div class="container">
+  <div class="row">
+    <div class="col-md-7 mt-2">
+      <table class="table table-bordered table-hover">
+        <thead>
+          <tr>
+            <th>Oferta</th>
+            <th>Vendedor</th>
+            <th>Porciones</th>
+            <th>Localización</th>
+            <th>Acciones</th>
+          </tr>
+        </thead>
+        <tbody>
+            <% if (data) { %>
+              <% for (var i = 0; i < data.length; i++) { %>
+                <% if (data[i].idusuario != user.id) { %>
+                <tr>
+                  <td> <%= data[i].titulo %> </td>
+                  <td> <%= data[i].vendedor %> </td>
+                  <td> <%= data[i].porciones %> </td>
+                  <td> <%= data[i].ciudad %> </td>
+                  <td>
+                    <button type="button" class="btn btn-success"> Examinar </button>
+                  </td>
+                </tr>
+                <% } %>
+              <% } %>
+            <% } %>
+        </tbody>
+      </table>
     </div>
-   </div>
+    <div class="col md-4 ml-5">
+
+    </div>
   </div>
+</div>
+
  </div>
 </body>
 </html>

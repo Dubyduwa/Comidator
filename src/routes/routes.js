@@ -12,6 +12,9 @@ module.exports = function(app, passport) {
 
  app.get('/inicio', controller.inicio);
  app.post('/add', controller.save);
+ app.get('/deleteoffer/:id', controller.deleteoffer);
+ app.get('/updateoffer/:id', controller.updateoffer);
+ app.post('/updateoffer/:id', controller.updateofferi);
 
  app.post('/login', passport.authenticate('local-login', {
   successRedirect: '/profile',
@@ -46,7 +49,7 @@ module.exports = function(app, passport) {
        console.log(rows);
        res.render('profile.ejs', {
          user: req.user,
-         data: 'rows'
+         data: rows
        });
      });
    });
