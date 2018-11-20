@@ -16,7 +16,7 @@
     <div class="collapse navbar-collapse" id="navbarColor01">
       <ul class="navbar-nav mr-auto">
         <li class="nav-item">
-        <a class="nav-link" href="#">Editar perfil</a>
+        <a class="nav-link" href="/updateuser/<%= user.id %>">Editar perfil</a>
       </li>
         <li class="nav-item">
           <a class="nav-link" href="/logout">Cerrar sesión</a>
@@ -74,7 +74,7 @@
         <h4>Publicar una oferta</h4>
       </div>
       <div class="card-body">
-        <form action="/add" method="post">
+        <form action="/addoffer" method="post">
           <div class="form-group">
             <input type="text" name="titulo" placeholder="Añade un título" class="form-control">
           </div>
@@ -87,6 +87,21 @@
           <div class="form-group">
             <input type="text" name="ciudad" placeholder="Añade una localización" class="form-control">
           </div>
+          <div class="form-group">
+              <select type="text" name="alergenos" class="form-control">
+                <option selected disabled>¿Contiene alérgenos?</option>
+                <option></option>
+                <option>Lactosa</option>
+                <option>Gluten</option>
+                <option>Marisco</option>
+                <option>Frutos secos</option>
+                <option>Trigo</option>
+                <option>Pescado</option>
+                <option>Cacahuete</option>
+                <option>Crustácetos</option>
+                <option>Datsi</option>
+              </select>
+            </div>
           <button type="submit" class="btn btn-primary">
             Publicar oferta
           </button>
@@ -111,8 +126,10 @@
           <tr>
             <th>Oferta</th>
             <th>Vendedor</th>
+            <th>Descripcion</th>
             <th>Porciones</th>
             <th>Localización</th>
+            <th>Alérgenos</th>
             <th>Acciones</th>
           </tr>
         </thead>
@@ -123,8 +140,10 @@
                 <tr>
                   <td> <%= data[i].titulo %> </td>
                   <td> <%= data[i].vendedor %> </td>
+                  <td> <%= data[i].descripcion %> </td>
                   <td> <%= data[i].porciones %> </td>
                   <td> <%= data[i].ciudad %> </td>
+                  <td> <%= data[i].alergenos %> </td>
                   <td>
                     <button type="button" class="btn btn-success"> Examinar </button>
                   </td>

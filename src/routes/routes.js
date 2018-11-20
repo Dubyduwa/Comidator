@@ -11,10 +11,12 @@ module.exports = function(app, passport) {
  });
 
  app.get('/inicio', controller.inicio);
- app.post('/add', controller.save);
+ app.post('/addoffer', controller.addoffer);
  app.get('/deleteoffer/:id', controller.deleteoffer);
  app.get('/updateoffer/:id', controller.updateoffer);
  app.post('/updateoffer/:id', controller.updateofferi);
+ app.get('/updateuser/:id', controller.updateuser);
+ app.post('/updateuser/:id', controller.updateuseri);
 
  app.post('/login', passport.authenticate('local-login', {
   successRedirect: '/profile',
@@ -46,6 +48,7 @@ module.exports = function(app, passport) {
        if (err){
          console.log(err);
        }
+       console.log(req.user);
        console.log(rows);
        res.render('profile.ejs', {
          user: req.user,

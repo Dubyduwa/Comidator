@@ -32,21 +32,27 @@
       <div class="col-md-5">
         <div class="card">
           <div class="card-header">
-            <h4>Edita tu oferta</h4>
+            <h4>Editar perfil</h4>
           </div>
           <div class="card-body">
-            <form action="/updateoffer/<%= data.id %>" method="post">
+            <form action="/updateuser/<%= data.id %>" method="post">
               <div class="form-group">
-                <input type="text" name="titulo" value="<%= data.titulo %>" class="form-control">
+                <input type="text" name="username" value="<%= data.username %>" class="form-control">
               </div>
               <div class="form-group">
-                <input type="text" name="descripcion" value="<%= data.descripcion %>" class="form-control">
+                <input type="text" name="password" value="<%= data.password %>" class="form-control">
               </div>
               <div class="form-group">
-                <input type="int" name="porciones" value="<%= data.porciones %>" class="form-control">
+                <input type="text" name="email" placeholder="Introduce un Email" value="<%= data.email %>" class="form-control">
               </div>
               <div class="form-group">
-                <input type="text" name="ciudad" value="<%= data.ciudad %>" class="form-control">
+                <input type="text" name="alergenos" placeholder="Alergenos" value="<%= data.alergenos %>" class="form-control">
+              </div>
+              <div class="form-group">
+                <input type="text" name="preferencias" placeholder="Tus preferencias" value="<%= data.preferencias %>" class="form-control">
+              </div>
+              <div class="form-group">
+                <input type="text" name="ciudad" placeholder="Ciudad" value="<%= data.ciudad %>" class="form-control">
               </div>
               <button type="submit" class="btn btn-primary">
                 Guardar cambios

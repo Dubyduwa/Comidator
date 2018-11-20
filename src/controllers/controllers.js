@@ -6,7 +6,7 @@ controller.inicio = (req, res) => {
 
 };
 
-controller.save = (req, res) => {
+controller.addoffer = (req, res) => {
   console.log(req.user);
   console.log(req.body);
   req.getConnection((err, conn) => {
@@ -52,5 +52,26 @@ controller.deleteoffer = (req, res) => {
   });
 };
 
+controller.updateuser = (req, res) => {
+  console.log(req.params);
+  var id = req.params.id;
+  req.getConnection((err, conn) => {
+    conn.query('SELECT * FROM Usuario WHERE id = ?', [id], (err, rows) => {
+      res.render('edituser', {
+        data: rows[0]
+      });
+    });
+  });
+};
+
+controller.updateuseri = (req, res) => {
+  var id = req.params.id;
+  const newoffer = req.body;
+  req.getConnection((err, conn) => {
+    conn.query('UPDATE Usuario set ? WHERE id = ?', [newoffer, id], (err,rows) => {
+      res.redirect('/profile');
+    });
+  });
+};
 
 module.exports = controller;

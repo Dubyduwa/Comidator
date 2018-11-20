@@ -40,10 +40,14 @@ module.exports = function(passport) {
       username: username,
       password: password
      };
+     var email = req.body.email;
+     var alergenos = req.body.alergenos;
+     var preferencias = req.body.preferencias;
+     var ciudad = req.body.ciudad;
 
-     var insertQuery = "INSERT INTO Usuario (username, password) values (?, ?)";
+     var insertQuery = "INSERT INTO Usuario (username, password, email, alergenos, preferencias, ciudad) values (?, ?, ?, ?, ?, ?)";
 
-     connection.query(insertQuery, [newUserMysql.username, newUserMysql.password],
+     connection.query(insertQuery, [newUserMysql.username, newUserMysql.password, email, alergenos, preferencias, ciudad],
       function(err, rows){
        console.log(err);
        console.log(rows);
