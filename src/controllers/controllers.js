@@ -9,6 +9,14 @@ controller.inicio = (req, res) => {
 controller.addoffer = (req, res) => {
   console.log(req.user);
   console.log(req.body);
+  res.render('addoffer', {
+    user: req.user
+  });
+};
+
+controller.addofferi = (req, res) => {
+  console.log(req.user);
+  console.log(req.body);
   req.getConnection((err, conn) => {
     console.log(err);
     conn.query('INSERT INTO Oferta (titulo, vendedor, descripcion, porciones, ciudad, idusuario) values (?, ?, ?, ?, ?, ?)', [req.body.titulo, req.user.username, req.body.descripcion, req.body.porciones, req.body.ciudad, req.user.id], (err, rows) =>{
@@ -25,6 +33,7 @@ controller.updateoffer = (req, res) => {
   req.getConnection((err, conn) => {
     conn.query('SELECT * FROM Oferta WHERE id = ?', [id], (err, rows) => {
       res.render('editoffer', {
+        user: req.user,
         data: rows[0]
       });
     });

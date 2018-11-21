@@ -11,7 +11,8 @@ module.exports = function(app, passport) {
  });
 
  app.get('/inicio', controller.inicio);
- app.post('/addoffer', controller.addoffer);
+ app.get('/addoffer', controller.addoffer);
+ app.post('/addoffer', controller.addofferi);
  app.get('/deleteoffer/:id', controller.deleteoffer);
  app.get('/updateoffer/:id', controller.updateoffer);
  app.post('/updateoffer/:id', controller.updateofferi);
