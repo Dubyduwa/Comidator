@@ -18,6 +18,7 @@ module.exports = function(app, passport) {
  app.post('/updateoffer/:id', controller.updateofferi);
  app.get('/updateuser/:id', controller.updateuser);
  app.post('/updateuser/:id', controller.updateuseri);
+ app.get('/viewoffer/:id', controller.viewoffer);
 
  app.post('/login', passport.authenticate('local-login', {
   successRedirect: '/profile',

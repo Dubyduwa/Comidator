@@ -79,7 +79,7 @@
 
 <span class="badge badge-pill badge-light ml-5">
 <div class="container">
- <div class="page-header text-left mt-2" >
+ <div class="page-header text-left mt-2">
   <h1>Ofertas que te pueden interesar:</h1>
  </div>
 </div>
@@ -93,7 +93,7 @@
           <tr>
             <th>Oferta</th>
             <th>Vendedor</th>
-            <th>Descripcion</th>
+            <th>Descripción</th>
             <th>Porciones</th>
             <th>Localización</th>
             <th>Alérgenos</th>
@@ -112,7 +112,7 @@
                   <td> <%= data[i].ciudad %> </td>
                   <td> <%= data[i].alergenos %> </td>
                   <td>
-                    <button type="button" class="btn btn-success"> Examinar </button>
+                    <a href="/viewoffer/<%= data[i].id %>" class="btn btn-success"> Examinar </a>
                   </td>
                 </tr>
                 <% } %>
@@ -120,9 +120,6 @@
             <% } %>
         </tbody>
       </table>
-    </div>
-    <div class="col md-4 ml-5">
-
     </div>
   </div>
 </div>

@@ -83,4 +83,17 @@ controller.updateuseri = (req, res) => {
   });
 };
 
+controller.viewoffer = (req, res) => {
+  console.log(req.params);
+  var id = req.params.id;
+  req.getConnection((err, conn) => {
+    conn.query('SELECT * FROM Oferta WHERE id = ?', [id], (err, rows) => {
+      res.render('viewoffer', {
+        user: req.user,
+        data: rows[0]
+      });
+    });
+  });
+};
+
 module.exports = controller;
