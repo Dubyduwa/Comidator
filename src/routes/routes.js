@@ -10,6 +10,23 @@ module.exports = function(app, passport) {
   res.render('login.ejs', {message:req.flash('loginMessage')});
  });
 
+ app.get('/mysearch', function(req, res){
+    var mytext = req.query.mytext;
+    console.log(mytext);
+    req.getConnection((err, conn) => {
+      console.log(err);
+      conn.query('SELECT * FROM appcomidasdb.Oferta WHERE titulo LIKE ' + '"%' + mytext + '%"' + ' OR descripcion LIKE ' + '"%' + mytext + '%"', (err, rows) => {
+        console.log(err);
+        console.log(rows);
+        res.render('searchoffer', {
+          user: req.user,
+          data: rows,
+          text: mytext
+        });
+      });
+    });
+});
+
  app.get('/inicio', controller.inicio);
  app.get('/addoffer', controller.addoffer);
  app.post('/addoffer', controller.addofferi);

@@ -63,10 +63,16 @@
               <div class="form-group">
                 <input type="text" name="ciudad" value="<%= data.ciudad %>" class="form-control">
               </div>
-              <button type="submit" class="btn btn-primary">
+              <div class="form-group">
+                <div class="custom-file">
+                  <input type="file" class="custom-file-input" id="inputGroupFile02">
+                  <label class="custom-file-label" for="inputGroupFile02">Selecciona una imagen</label>
+                </div>
+              </div>
+              <button type="submit" class="btn btn-primary mt-4">
                 Guardar cambios
               </button>
-              <a href="/profile" class="btn btn-danger btn-sm">Volver</a>
+              <a href="/profile" class="btn btn-danger btn-sm mt-4">Volver</a>
             </form>
         </div>
       </div>

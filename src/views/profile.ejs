@@ -25,12 +25,15 @@
           <a class="nav-link" href="/logout">Cerrar sesión</a>
         </li>
       </ul>
-      <form class="form-inline my-2 my-lg-0">
-        <input class="form-control mr-sm-2" type="text" placeholder="Busca una oferta">
-        <a href="#" class="btn btn-secondary">Buscar</a>
+      <form action="/mysearch" method="GET">
+          <input type="text" name="mytext" placeholder="Busca una oferta" required />
+          <input type="submit" value="Buscar" />
       </form>
     </div>
   </nav>
+
+
+
 <span class="badge badge-pill badge-light ml-5 mt-3">
  <div class="container">
   <div class="page-header text-left mt-2">
@@ -123,7 +126,5 @@
     </div>
   </div>
 </div>
-
- </div>
 </body>
 </html>
