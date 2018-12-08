@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <title>APP COMIDAS</title>
+  <link rel="stylesheet" href="https://bootswatch.com/4/lux/bootstrap.min.css">
+</head>
+<body background="https://www.cocinavital.mx/wp-content/uploads/2018/02/platillos_para_una_comida_de_cuaresma_portada.jpg">
+  <nav class="navbar navbar-expand-lg navbar-dark bg-primary">
+    <a class="navbar-brand" href="/profile">APP COMIDAS</a>
+    <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarColor01" aria-controls="navbarColor01" aria-expanded="false" aria-label="Toggle navigation">
+      <span class="navbar-toggler-icon"></span>
+    </button>
+  </nav>
+
+  <div class="jumbotron text-center ml-5 mr-5 mt-5">
+   <h3> ¿Estás seguro/a de que quieres borrar tu perfil? </h3>
+   <a href="/killuser/<%= data.id %>" class="btn btn-outline-primary">Si</a>
+   <a href="/updateuser/<%= data.id %>" class="btn btn-outline-primary">No</a>
+  </div>
+
+</body>
+</html>

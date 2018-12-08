@@ -61,12 +61,43 @@ controller.deleteoffer = (req, res) => {
   });
 };
 
+controller.killuser = (req, res) => {
+  console.log(req.params);
+  var id = req.params.id;
+  req.getConnection((err, conn) => {
+    console.log(err);
+    conn.query('DELETE FROM Oferta WHERE idusuario = ?', [id], (err, rows) => {
+      console.log(err);
+      res.redirect('/');
+    });/*
+    conn.query('DELETE FROM Usuario WHERE id = ?', [id], (err, rows) => {
+      console.log(err);
+      res.redirect('/');
+    });*/
+  });
+};
+
+controller.deleteuser = (req, res) => {
+  console.log(req.params);
+  var id = req.params.id;
+  req.getConnection((err, conn) => {
+    conn.query('SELECT * FROM Usuario WHERE id = ?', [id], (err, rows) => {
+      console.log(rows[0]);
+      res.render('deleteuser', {
+        data: rows[0]
+      });
+    });
+  });
+};
+
 controller.updateuser = (req, res) => {
   console.log(req.params);
   var id = req.params.id;
   req.getConnection((err, conn) => {
     conn.query('SELECT * FROM Usuario WHERE id = ?', [id], (err, rows) => {
+      console.log(req.user);
       res.render('edituser', {
+        user: req.user,
         data: rows[0]
       });
     });
@@ -95,5 +126,45 @@ controller.viewoffer = (req, res) => {
     });
   });
 };
+
+controller.viewoffer = (req, res) => {
+  console.log(req.params);
+  var id = req.params.id;
+  req.getConnection((err, conn) => {
+    conn.query('SELECT * FROM Oferta WHERE id = ?', [id], (err, rows) => {
+      res.render('viewoffer', {
+        user: req.user,
+        data: rows[0]
+      });
+    });
+  });
+};
+
+controller.viewoffer = (req, res) => {
+  console.log(req.params);
+  var id = req.params.id;
+  req.getConnection((err, conn) => {
+    conn.query('SELECT * FROM Oferta WHERE id = ?', [id], (err, rows) => {
+      res.render('viewoffer', {
+        user: req.user,
+        data: rows[0]
+      });
+    });
+  });
+};
+
+controller.viewuser = (req, res) => {
+  console.log(req.params);
+  var id = req.params.id;
+  req.getConnection((err, conn) => {
+    conn.query('SELECT * FROM Usuario WHERE id = ?', [id], (err, rows) => {
+      res.render('viewuser', {
+        user: req.user,
+        data: rows[0]
+      });
+    });
+  });
+};
+
 
 module.exports = controller;

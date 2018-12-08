@@ -31,11 +31,14 @@ module.exports = function(app, passport) {
  app.get('/addoffer', controller.addoffer);
  app.post('/addoffer', controller.addofferi);
  app.get('/deleteoffer/:id', controller.deleteoffer);
+ app.get('/deleteuser/:id', controller.deleteuser);
+ app.get('/killuser/:id', controller.killuser);
  app.get('/updateoffer/:id', controller.updateoffer);
  app.post('/updateoffer/:id', controller.updateofferi);
  app.get('/updateuser/:id', controller.updateuser);
  app.post('/updateuser/:id', controller.updateuseri);
  app.get('/viewoffer/:id', controller.viewoffer);
+ app.get('/viewuser/:id', controller.viewuser);
 
  app.post('/login', passport.authenticate('local-login', {
   successRedirect: '/profile',

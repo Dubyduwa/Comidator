@@ -32,6 +32,7 @@
         <div class="card text-primary border-primary">
           <div class="card-header">
             <h4>Editar perfil</h4>
+            <a href="/deleteuser/<%= data.id %>" class="btn btn-warning btn-sm">Borrar perfil</a>
           </div>
           <div class="card-body">
             <form action="/updateuser/<%= data.id %>" method="post">
