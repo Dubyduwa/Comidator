@@ -1,11 +1,5 @@
 const controller ={};
 
-controller.inicio = (req, res) => {
-      res.render('inicio', {
-    });
-
-};
-
 controller.addoffer = (req, res) => {
   console.log(req.user);
   console.log(req.body);
@@ -216,6 +210,31 @@ controller.viewofferuser = (req, res) => {
         user: req.user,
         data: rows
       });
+    });
+  });
+};
+
+controller.buyoffer = (req, res) => {
+  console.log(req.params);
+  var id = req.params.id;
+  req.getConnection((err, conn) => {
+    conn.query('SELECT * FROM Oferta WHERE id = ?', [id], (err, rows) => {
+      res.render('buyoffer', {
+        user: req.user,
+        data: rows[0]
+      });
+    });
+  });
+};
+
+controller.buyofferi = (req, res) => {
+  var id = req.params.id;
+  const newoffer = req.body;
+  const newporciones = req.body.porciones;
+  req.getConnection((err, conn) => {
+    conn.query('UPDATE appcomidasdb.Oferta set porciones = porciones - ? WHERE id = ?', [newporciones, id], (err,rows) => {
+      console.log(err);
+      res.send('works');
     });
   });
 };

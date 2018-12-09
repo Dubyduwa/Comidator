@@ -3,7 +3,7 @@
 <head>
   <meta charset="utf-8">
   <title>APP COMIDAS</title>
-  <link rel="stylesheet" href="https://bootswatch.com/4/lux/bootstrap.min.css">
+  <link rel="stylesheet" href="https://bootswatch.com/4/minty/bootstrap.min.css">
 </head>
 
 <body background="https://www.cocinavital.mx/wp-content/uploads/2018/02/platillos_para_una_comida_de_cuaresma_portada.jpg">
@@ -14,12 +14,12 @@
     </button>
   </nav>
 
-  <div class="card text-primary border-primary mb-5 mt-5 mr-5 ml-5">
+  <div class="card text-dark border-primary mb-5 mt-5 mr-5 ml-5">
   <h3 class="card-header"><%= data.titulo %></h3>
   <div class="card-body">
     <h5 class="card-title"><%= data.descripcion %></h5>
   </div>
-  <img src="https://img.saboresdehoy.com/receta/164/croquetas-de-jamon.jpg" alt="Card image">
+  <img src="<%= data.imagen %>" alt="Card image">
   <% if (data.alergenos == null) { %>
   <div class="card-body">
     <p class="card-text">Esta oferta no contiene alérgenos de ningun tipo</p>
@@ -37,11 +37,11 @@
     </div>
   <% } %>
   <div class="card-body">
-    <a href="" class="btn btn-outline-primary">Comprar esta oferta</a>
+    <a href="/buyoffer/<%= data.id %>" class="btn btn-outline-primary">Comprar esta oferta</a>
     <a href="/viewuser/<%= data.idusuario %>" class="btn btn-outline-primary">Examinar vendedor</a>
   </div>
   <div class="card-footer text-muted">
-    <a href="/viewofferuser/<%= user.id %>" class="btn btn-danger btn-sm">Volver</a>
+    <a href="/viewofferuser/<%= data.idusuario %>" class="btn btn-danger btn-sm">Volver</a>
   </div>
 </div>
 

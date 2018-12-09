@@ -3,7 +3,7 @@
 <head>
   <meta charset="utf-8">
   <title>APP COMIDAS</title>
-  <link rel="stylesheet" href="https://bootswatch.com/4/lux/bootstrap.min.css">
+  <link rel="stylesheet" href="https://bootswatch.com/4/minty/bootstrap.min.css">
 </head>
 <body background="https://www.cocinavital.mx/wp-content/uploads/2018/02/platillos_para_una_comida_de_cuaresma_portada.jpg">
   <nav class="navbar navbar-expand-lg navbar-dark bg-primary">
@@ -30,7 +30,7 @@
   <div class="container mt-5">
     <div class="row">
       <div class="col-md-5">
-        <div class="card text-primary border-primary">
+        <div class="card text-dark border-primary">
           <div class="card-header">
             <h4>Edita tu oferta</h4>
           </div>
@@ -64,12 +64,16 @@
                 <input type="text" name="ciudad" value="<%= data.ciudad %>" class="form-control">
               </div>
               <div class="form-group">
-                  <select type="text" name="activada" class="form-control">
+                  <select type="text" name="activada" value="<%= data.activada %>" class="form-control">
                     <option selected disabled>Activada</option>
                     <option>Si</option>
                     <option>No</option>
                   </select>
-                </div>
+              </div>
+              <div class="form-group">
+                  <input type="text" name="imagen" value="<%= data.imagen %>" placeholder="URL de la imagen" class="form-control">
+              </div>
+              <img style="height: 200px; width: 100%; display: block;" src="<%= data.imagen %>" alt="Form image">
               <div class="form-group">
                 <div class="custom-file">
                   <input type="file" class="custom-file-input" id="inputGroupFile02">

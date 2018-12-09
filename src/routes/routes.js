@@ -28,7 +28,6 @@ module.exports = function(app, passport) {
 });
 
  app.get('/ranking', controller.ranking);
- app.get('/inicio', controller.inicio);
  app.get('/addoffer', controller.addoffer);
  app.post('/addoffer', controller.addofferi);
  app.get('/deleteoffer/:id', controller.deleteoffer);
@@ -43,6 +42,8 @@ module.exports = function(app, passport) {
  app.get('/viewuser/:id', controller.viewuser);
  app.get('/viewuserranking/:id', controller.viewuserranking);
  app.get('/viewofferuser/:id', controller.viewofferuser);
+ app.get('/buyoffer/:id', controller.buyoffer);
+ app.post('/buyoffer/:id', controller.buyofferi);
 
  app.post('/login', passport.authenticate('local-login', {
   successRedirect: '/profile',
