@@ -153,6 +153,19 @@ controller.viewoffer = (req, res) => {
   });
 };
 
+controller.viewofferranking = (req, res) => {
+  console.log(req.params);
+  var id = req.params.id;
+  req.getConnection((err, conn) => {
+    conn.query('SELECT * FROM Oferta WHERE id = ?', [id], (err, rows) => {
+      res.render('viewofferranking', {
+        user: req.user,
+        data: rows[0]
+      });
+    });
+  });
+};
+
 controller.viewuser = (req, res) => {
   console.log(req.params);
   var id = req.params.id;
@@ -166,5 +179,45 @@ controller.viewuser = (req, res) => {
   });
 };
 
+controller.viewuserranking = (req, res) => {
+  console.log(req.params);
+  var id = req.params.id;
+  req.getConnection((err, conn) => {
+    conn.query('SELECT * FROM Usuario WHERE id = ?', [id], (err, rows) => {
+      res.render('viewuserranking', {
+        user: req.user,
+        data: rows[0]
+      });
+    });
+  });
+};
+
+
+
+controller.ranking = (req, res) => {
+  req.getConnection((err, conn) => {
+    conn.query('SELECT * FROM Usuario ORDER BY nota DESC', (err, rows) => {
+      console.log(err);
+      console.log(rows);
+      res.render('ranking', {
+        user: req.user,
+        data: rows
+      });
+    });
+  });
+};
+
+controller.viewofferuser = (req, res) => {
+  console.log(req.params);
+  var id = req.params.id;
+  req.getConnection((err, conn) => {
+    conn.query('SELECT * FROM appcomidasdb.Oferta WHERE idusuario = ?', [id], (err, rows) => {
+      res.render('viewofferuser', {
+        user: req.user,
+        data: rows
+      });
+    });
+  });
+};
 
 module.exports = controller;

@@ -27,6 +27,7 @@ module.exports = function(app, passport) {
     });
 });
 
+ app.get('/ranking', controller.ranking);
  app.get('/inicio', controller.inicio);
  app.get('/addoffer', controller.addoffer);
  app.post('/addoffer', controller.addofferi);
@@ -38,7 +39,10 @@ module.exports = function(app, passport) {
  app.get('/updateuser/:id', controller.updateuser);
  app.post('/updateuser/:id', controller.updateuseri);
  app.get('/viewoffer/:id', controller.viewoffer);
+ app.get('/viewofferranking/:id', controller.viewofferranking);
  app.get('/viewuser/:id', controller.viewuser);
+ app.get('/viewuserranking/:id', controller.viewuserranking);
+ app.get('/viewofferuser/:id', controller.viewofferuser);
 
  app.post('/login', passport.authenticate('local-login', {
   successRedirect: '/profile',
