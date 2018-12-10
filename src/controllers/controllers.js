@@ -231,11 +231,31 @@ controller.buyofferi = (req, res) => {
   var id = req.params.id;
   const newoffer = req.body;
   const newporciones = req.body.porciones;
+  console.log('El usuario a encuestar es ' + req.body.idusuario);
+  console.log('Su nombre es ' + req.body.vendedor);
   req.getConnection((err, conn) => {
     conn.query('UPDATE appcomidasdb.Oferta set porciones = porciones - ? WHERE id = ?', [newporciones, id], (err,rows) => {
       console.log(err);
-      res.send('works');
+      res.render('encuesta', {
+        user: req.body.idusuario,
+        username: req.body.vendedor
+      });
     });
+  });
+};
+
+controller.encuesta = (req, res) => {
+  console.log('La nota es ' + req.body.nota);
+  console.log('La descripcion es ' + req.body.texto);
+  console.log('El usuario es ' + req.body.idusuario);
+  req.getConnection((err, conn) => {
+    conn.query('INSERT INTO Valoracion (nota, texto, idusuario) values (?, ?, ?)', [req.body.nota, req.body.texto, req.body.idusuario], (err, rows) =>{
+      console.log(err);
+      console.log(rows);
+    });
+  });
+  res.render('thankyou', {
+
   });
 };
 

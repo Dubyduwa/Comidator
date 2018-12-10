@@ -23,10 +23,13 @@
             <form action="/buyoffer/<%= data.id %>" method="post">
               <img style="height: 200px; width: 100%; display: block;" src="<%= data.imagen %>" alt="Form image">
               <h1></h1>
+              <label>Vendido por <%= data.vendedor %></label>
               <label>Quedan <%= data.porciones %> porciones de esta oferta, ¿Cuantas porciones quieres comprar?</label>
               <div class="form-group">
                 <input type="text" name="porciones" placeholder="nº de porciones" class="form-control">
               </div>
+              <input type="hidden" name="idusuario" value="<%= data.idusuario %>">
+              <input type="hidden" name="vendedor" value="<%= data.vendedor %>">
               <button type="submit" class="btn btn-primary mt-2">
                 Realizar la compra
               </button>
