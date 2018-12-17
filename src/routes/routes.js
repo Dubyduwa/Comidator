@@ -45,6 +45,9 @@ module.exports = function(app, passport) {
  app.get('/buyoffer/:id', controller.buyoffer);
  app.post('/buyoffer/:id', controller.buyofferi);
  app.post('/encuesta/:id', controller.encuesta);
+ app.get('/getchat/:id', controller.viewchat);
+ app.post('/getchat/:id', controller.killchat);
+
 
  app.post('/login', passport.authenticate('local-login', {
   successRedirect: '/profile',

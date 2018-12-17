@@ -255,8 +255,31 @@ controller.encuesta = (req, res) => {
     });
   });
   res.render('thankyou', {
-
   });
+};
+
+controller.viewchat = (req, res) => {
+  console.log(req.params);
+  var id = req.params.id;
+  req.getConnection((err, conn) => {
+    conn.query('SELECT * FROM Chat WHERE id = ?', [id], (err, rows) => {
+      res.render('chat.ejs', {
+        user: req.user,
+        data: rows[0]
+      });
+    });
+  });
+};
+
+controller.killchat = (req, res) => {
+  console.log(req.params);
+  var id = req.params.id;
+  req.getConnection((err, conn) => {
+    console.log(err);
+    conn.query('DELETE FROM Chat WHERE id = ?', [id], (err, rows) => {
+      console.log(err);
+      res.redirect('/');
+    });
 };
 
 module.exports = controller;
